@@ -37,7 +37,7 @@
 			<a th:href="@{'/movie' + '/' + ${movie.id}}"
 				th:text="${movie.title} + ' (' + ${movie.year} + ')'">Up! (2000)</a>
 				
-				<div><img th:src="'/photos/' +${movie.id}+ '/' +${movie.urlImage}" width="20%" height="20%"></div>
+				<div><img th:src="'/photos/' +${movie.id}+ '/' +${movie.urlImage}" width="20%"></div>
 		</li>
 	</ul>
 </body>

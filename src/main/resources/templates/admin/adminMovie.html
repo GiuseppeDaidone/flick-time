@@ -33,7 +33,7 @@
 <section>
 
   <p>
-	<img th:src="'/photos/' +${movie.id}+ '/' +${movie.urlImage}" width="100%">
+	<img th:src="'/photos/' +${movie.id}+ '/' +${movie.urlImage}" class="image">
   </p>
 
 <div id="flex-container">
@@ -42,7 +42,7 @@
 	   <hr>
 	     <div th:if="${movie}">
 		   <h3><span th:text="${movie.title}">Up!</span> </h3>
-		   <h4><span th:text="'(' + ${movie.year} + ')'">2000</span> </h4>
+		   <span th:text="'(' + ${movie.year} + ')'">2000</span>
 	    </div>
     </div>	
     
@@ -77,9 +77,9 @@
 </section>
 
  <section>
-	<h3>Reviews </h3>
+	<h2>Reviews </h2>
 		
-		<h2><a th:href="@{'/reviewForm'+ '/' + ${movie.id}}">Write a review</a></h2>
+		<h3><a th:href="@{'/reviewForm'+ '/' + ${movie.id}}">Write a review</a></h3>
 		<hr>		
 	<div id="myDIV">
      <div id="content">     
@@ -91,8 +91,8 @@
            <a th:href="@{'/admin/cancellaRecensione/' + ${movie.id}}">Delete review</a>
            </span>
             </div>            
-       <div> Rating : <span th:text="${review.movieRating}">movie rating</span></div>
-    <div th:text="${review.title} + ':' + ${review.content}">title and review </div>
+       <div>Rating: <span th:text="${review.movieRating}">movie rating</span></div>
+    <div th:text="${review.title} + ': ' + ${review.content}">title and review </div>
     <div><a th:href="@{'/admin/cancellaRecensione' +'/' + ${movie.id} +'/'+ ${review.id}}">
           Delete review</a></div>
    </li>  
@@ -100,10 +100,6 @@
 	</div>
 	</div>
 	</section>
-	
-	
 
-
- <footer></footer>
 </body>
 </html>

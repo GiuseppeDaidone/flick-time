@@ -33,7 +33,7 @@
 	
 	<h1>Add a movie</h1>
 	
-	<form th:action="@{/admin/movie}" method="POST" th:object="${movie}" enctype="multipart/form-data" >
+	<form th:action="@{/admin/movie}" method="POST" th:object="${movie}" enctype="multipart/form-data" class="form-compiling">
 
 
 		 <div th:if="${#fields.hasGlobalErrors()}">

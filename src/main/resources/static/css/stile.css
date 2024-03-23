@@ -4,7 +4,6 @@
 body { 
     font-family: "DM Sans", sans-serif;
     font-size: 20px;
-    /*background-color: #FAFAFC;*/
     color:#222526;
     background: linear-gradient(45deg, #F2F5FF, #FFF6F2, #FAFAFC);
     animation: gradientAnimation 10s infinite;
@@ -122,10 +121,15 @@ header a {
 }
 
 section {
-  background-color: #CEF2FF;
+  background-color: #F2F5FF;
   border: 2px solid black;
   border-radius: 8px;
-  margin: 50px 200px;
+  position: relative;
+  width: 70%;
+  left: 15%;
+  right: 15%;
+  margin: 5px;
+  padding: 5px;
 }
 
 section.col {
@@ -138,43 +142,63 @@ section.col {
 #flex-container {
   display: flex;
   justify-content: space-between;
-  height: 200px;
 }
 #flex-contain {
   display: flex;
   justify-content: space-between;
-  height: 400px;
 }
 p {
-  background-color: silver;
-  height: 200px;
   margin-bottom: 75px;
 }
 p.col {
   background-color: unset;
-  height: 400px;
   text-align: center;
 }
 
+.image {
+	position: relative;
+	height: auto;
+	width: 50%;
+	display: flex;
+	left: 25%;
+	right: 25%;
+	border: 2px solid black;
+	border-radius: 8px;
+}
+
+.form-compiling {
+	padding: 15px;
+}
+
 div.col { 
-  background-color: #B8F5E5;
+  background-color: #FFF6F2;
   border: 2px solid black;
   border-radius: 8px;
   width: calc(50% - 5px );
+  padding: 5px;
+  margin: 5px;
+  padding-bottom: 50px;
 }
 #myDIV {
-  height: 250px;
-  width: 1100px;
+  height: 100%;
+  width: 100%;
   overflow: auto;
-  background: #B8F5E5;
+  background: #FFD2C6;
 }
 
 #content {
   margin:50px;
-  height: 800px;
-  width: 2000px;
-  background-color: #B8F5E5;
+  background-color: #FFD2C6;
 }
+
+textarea {
+	background-color: #E6E8EB;
+	font-family: "DM Sans", sans-serif;
+  	font-size: 16px;
+  	padding: 10px 20px;
+  	width: -webkit-fill-available;
+}
+
 input[type=text], select {
   background: #E6E8EB;	
   width: 100%;
@@ -219,6 +243,26 @@ input[type=submit]:hover {
   background-color: #357BE0;
 }
 
+input[type=file] {
+	background-color: #E6E8EB;
+	font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    padding: 14px 20px;
+  	margin: 8px 0;
+  	border: none;
+  	cursor: pointer;
+}
+
+input[type=date] {
+	background-color: #E6E8EB;
+	font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    padding: 14px 20px;
+  	margin: 8px 0;
+  	border: none;
+  	cursor: pointer;
+}
+
 div.input {
   border-radius: 5px;
   background-color: #f2f2f2;
@@ -242,12 +286,4 @@ button {
 }
 button:hover {
   background-color: #357BE0; 
-}
-
-
-footer {
-  background-color: black;
-  border: 2px solid black;
-  border-radius: 8px;
-  height: 100px;
 }

@@ -30,10 +30,10 @@
   	</nav>
 
 	<h1>Search for movies by year</h1>
-	<form th:action="@{/searchMovies}" method="post">
+	<form th:action="@{/searchMovies}" method="post" class="form-compiling">
 		<div>Year: <input type="text" th:value="${year}" name="year" />
 		</div>
-		<div><input type="submit" /></div>
+		<div><input type="submit" value="Search"/></div>
 	</form>
 </body>
 
