@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Movie</title>
+<link rel="stylesheet" href="/css/stile.css" />
+
+</head>
+
+<body>
+  <nav>
+		<table><tr>
+		<td class="logo">
+			<div>
+				<a href="/"><img src="/images/flicktime-logo2-long.png" width="20%" /></a>
+			</div>
+		</td>
+		<td>
+			<table class="nav-table"><tr>
+				<div th:if="${userDetails}">
+					<td><span th:text="${userDetails.username}" class="nav-username"></span></td>
+					<td><button onclick="window.location.href='/logout';">Logout</button><td>
+				</div>
+			</tr></table>
+		</td>
+		<td>
+			<div th:unless="${userDetails}">
+				<button onclick="window.location.href='/login';" class="nav-button">Login</button>
+			</div>
+		</td>
+		</tr></table>
+  	</nav>
+	
+<section>
+
+  <p>
+	<img th:src="'/photos/' +${movie.id}+ '/' +${movie.urlImage}" width="100%">
+  </p>
+
+<div id="flex-container">
+	<div class="col">
+	  <h3>Movie Details</h3>
+	   <hr>
+	     <div th:if="${movie}">
+		   <h3><span th:text="${movie.title}">Up!</span> </h3>
+		   <h4><span th:text="'(' + ${movie.year} + ')'">2000</span> </h4>
+	    </div>
+    </div>	
+    
+     <div th:unless="${movie}">Does not exist</div>
+	
+
+
+    <div class="col">      
+     <h3>Director </h3>
+     <hr>
+     <div th:if="${movie.director}">
+     
+     <a th:href="@{'/artist' + '/'+ ${movie.director.id}}" 
+        th:text=" ${movie.director.name} +' ' +${movie.director.surname}" ></a>
+   </div>
+   </div>
+   
+   <div class="col"> 
+     <h3>Actors </h3>
+      <hr>
+        <div th:if="${movie.actors==null || movie.actors.isEmpty()}">There is no actor in this film</div>
+          <ul>
+             <li th:each="artist : ${movie.actors}">
+               <a th:href="@{'/artist' + '/'+ ${artist.id}}"
+            th:text="${artist.name} +' ' + ${artist.surname}"></a>
+            </li>
+         </ul>
+   
+      </div>
+
+</div>	
+</section>
+
+ <section>
+	<h3>Reviews </h3>
+		
+		<h2><a th:href="@{'/reviewForm'+ '/' + ${movie.id}}">Write a review</a></h2>
+		<hr>		
+	<div id="myDIV">
+     <div id="content">     
+     <div th:if="${movie.reviews==null || movie.reviews.isEmpty()}">There is no review</div>     
+		<ul>
+          <li th:each="review : ${movie.reviews}">  
+           <div th:text="${review.userName}">username 
+           <span>
+           <a th:href="@{'/admin/cancellaRecensione/' + ${movie.id}}">Delete review</a>
+           </span>
+            </div>            
+       <div> Valutazione : <span th:text="${review.movieRating}">movie rating</span></div>
+    <div th:text="${review.title} + ':' + ${review.content}">title and review </div>
+   
+   </li>  
+  </ul>	
+	</div>
+	</div>
+	</section>
+	
+	
+
+
+ <footer></footer>
+</body>
+</html>

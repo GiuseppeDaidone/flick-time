@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Actors selection</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<nav>
+		<table><tr>
+		<td class="logo">
+			<div>
+				<a href="/"><img src="/images/flicktime-logo2-long.png" width="20%" /></a>
+			</div>
+		</td>
+		<td>
+			<table class="nav-table"><tr>
+				<div th:if="${userDetails}">
+					<td><span th:text="${userDetails.username}" class="nav-username"></span></td>
+					<td><button onclick="window.location.href='/logout';">Logout</button><td>
+				</div>
+			</tr></table>
+		</td>
+		<td>
+			<div th:unless="${userDetails}">
+				<button onclick="window.location.href='/login';" class="nav-button">Login</button>
+			</div>
+		</td>
+		</tr></table>
+  	</nav>
+	
+	<h1 th:text="'Actors in the movie ' + ${movie.title}"></h1>
+	<div th:if="${movie.actors.isEmpty()}">There is no actor in this film</div>
+	<ul>
+		<li th:each="actor : ${movie.actors}">
+			<span th:text="${actor.name}+' '+${actor.surname}"></span>
+			<a th:href="@{'/admin/removeActorFromMovie/'+ ${actor.id}+'/'+${movie.id}}">Delete</a>
+		</li>
+	</ul>
+	<div>
+		Actors to add:
+		<ul>
+			<li th:each="actor : ${actorsToAdd}">
+				<span th:text="${actor.name}+' '+${actor.surname}"></span>
+				<a th:href="@{'/admin/addActorToMovie/'+ ${actor.id}+'/'+${movie.id}}">Add</a>
+			</li>
+		</ul>
+	<div>
+	<div>
+		<a th:href="@{'/admin/formUpdateMovie/'+ ${movie.id}}"><button type="button">Conclude</button></a>
+	</div>
+</body>
+
+</html>

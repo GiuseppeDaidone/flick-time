@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		FlickTime - Register
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<nav>
+		<table><tr>
+		<td class="logo">
+			<div>
+				<a href="/"><img src="/images/flicktime-logo2-long.png" width="20%" /></a>
+			</div>
+		</td>
+		<td>
+			<table class="nav-table"><tr>
+				<div th:if="${userDetails}">
+					<td><span th:text="${userDetails.username}" class="nav-username"></span></td>
+					<td><button onclick="window.location.href='/logout';">Logout</button><td>
+				</div>
+			</tr></table>
+		</td>
+		</tr></table>
+  	</nav>
+
+	<div class='rectangle-form'>
+	<h1>User Registration</h1>
+	<form th:action="@{/register}" method="POST">
+		<div>
+			<label>Name</label>
+			<span><input type="text" required th:field="${user.name}" /></span>
+			<span th:if="${#fields.hasErrors('user.name')}" th:errors="${user.name}" th:style="'color: #B81D13'">
+			</span>
+		</div>
+		<div>
+			<label>Surname</label>
+			<span><input type="text" required th:field="${user.surname}" /></span>
+			<span th:if="${#fields.hasErrors('user.surname')}" th:errors="${user.surname}" th:style="'color: #B81D13'">
+			</span>
+		</div>
+		<div>
+			<label>Email</label>
+			<span><input type="text" required th:field="${user.email}" /></span>
+			<span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}" th:style="'color: #B81D13'">
+			</span>
+		</div>
+		<div>
+			<label>Username</label>
+			<span>
+				<input type="text" required th:field="${credentials.username}" />
+			</span>
+			<span th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}"
+				th:style="'color: #B81D13'">
+			</span>
+		</div>
+		<div>
+			<label>Password</label>
+			<span><input type="password" required th:field="${credentials.password}" />
+			</span>
+			<span th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}"
+				th:style="'color: #B81D13'">
+			</span>
+		</div>
+		<div class="register-button">
+			<button type="submit">Register</button>
+		</div>
+	</form>
+	<div class="form-link">
+		<a th:href="@{/login}" th:text="Login">Login</a>
+	</div>
+	</div>
+</body>
+
+</html>

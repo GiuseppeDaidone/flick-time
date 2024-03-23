@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		FlickMovie - Login
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<nav>
+		<table><tr>
+		<td class="logo">
+			<div>
+				<a href="/"><img src="/images/flicktime-logo2-long.png" width="20%" /></a>
+			</div>
+		</td>
+		<td>
+			<table class="nav-table"><tr>
+				<div th:if="${userDetails}">
+					<td><span th:text="${userDetails.username}" class="nav-username"></span></td>
+					<td><button onclick="window.location.href='/logout';">Logout</button><td>
+				</div>
+			</tr></table>
+		</td>
+		</tr></table>
+  	</nav>
+
+ 	<div class='rectangle-form'>
+ 	<h1>Login</h1>
+	<form th:action="@{/login}" method="POST">
+			<div>
+				<span>Username</span>
+				<span><input name="username" type="text" required /></span>
+			</div>
+			<div>
+				<span>Password</span>
+				<span><input name="password" type="password" required /></span>
+			</div>
+			<div>
+				<span th:if="${param.error != null}" th:style="'color: #B81D13'">Incorrect username or password</span>
+			</div>
+			<div class="login-button">
+				<span><button type="submit">Login</button></span>
+			</div>
+	</form>
+	<div class="form-link">
+		<a th:href="@{/register}" th:text="Register">Register</a>
+	</div>
+	</div>
+
+</body>
+
+</html>

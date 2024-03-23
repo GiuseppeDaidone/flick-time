@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="windows-1256">
+<title>Review Form</title>
+<link rel="stylesheet" href="/css/stile.css" />
+</head>
+<body>
+
+  <nav>
+		<table><tr>
+		<td class="logo">
+			<div>
+				<a href="/"><img src="/images/flicktime-logo2-long.png" width="20%" /></a>
+			</div>
+		</td>
+		<td>
+			<table class="nav-table"><tr>
+				<div th:if="${userDetails}">
+					<td><span th:text="${userDetails.username}" class="nav-username"></span></td>
+					<td><button onclick="window.location.href='/logout';">Logout</button><td>
+				</div>
+			</tr></table>
+		</td>
+		<td>
+			<div th:unless="${userDetails}">
+				<button onclick="window.location.href='/login';" class="nav-button">Login</button>
+			</div>
+		</td>
+		</tr></table>
+  	</nav>
+	
+ <section>
+            <form th:action="@{'/movie' +'/' + ${movie.id} +'/' + ${userDetails.username}}"
+                  th:object="${review}" method="post">
+                  
+                              
+                <div class="row" >
+                    <div class="col-2">
+                        <label for="movieRating">Select Rating</label>
+                        <select class="form-control" id="movieRating" th:field="*{movieRating}">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                           
+                        </select>
+                    </div>
+                    <div>
+                    <label>Review Title </label>
+                    <span><input type="text" th:field="${review.title}"></span>
+                    </div>
+                    <div class="col-10">
+                        <label for="reviewContent">Detailed Review</label>
+                        <textarea class="form-control" id="reviewContent" rows="3" cols="70" placeholder="Write a review..." th:field="*{content}"></textarea>
+                    </div>
+                </div>
+                <div class="text-right mt-2">
+                    <button class="btn btn-primary" type="submit" value="Submit">Submit Review</button>
+                </div>
+            </form>
+            
+        </section>   
+        
+        
+ 
+</body>
+
+</html>
+        
+
+   

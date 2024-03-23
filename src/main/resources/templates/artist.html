@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artist</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<nav>
+		<table><tr>
+		<td class="logo">
+			<div>
+				<a href="/"><img src="/images/flicktime-logo2-long.png" width="20%" /></a>
+			</div>
+		</td>
+		<td>
+			<table class="nav-table"><tr>
+				<div th:if="${userDetails}">
+					<td><span th:text="${userDetails.username}" class="nav-username"></span></td>
+					<td><button onclick="window.location.href='/logout';">Logout</button><td>
+				</div>
+			</tr></table>
+		</td>
+		<td>
+			<div th:unless="${userDetails}">
+				<button onclick="window.location.href='/login';" class="nav-button">Login</button>
+			</div>
+		</td>
+		</tr></table>
+  	</nav>
+ 
+ <section>    
+    
+    
+    <p class="col">
+		<img  th:src="'/photos/' +${artist.id}+ '/' +${artist.urlOfPicture}" height="100%" text-align="center">
+		
+	</p>
+	
+	<div id="flex-contain">
+
+   <div class="col">
+    <h3>Artist Details</h3>
+    <hr>
+    <div th:if="${artist}">
+        <div th:text="${artist.name} + ' ' + ${artist.surname}">Dino Risi</div>
+        <label>Date of birth : </label>
+        <span th:text="'(' + ${artist.dateOfBirth} + ')'">2000/07/18</span>
+        
+        <div th:if="${artist.getDateOfDeath()}">
+        <label>Date of death : </label>
+        <span th:text="'(' + ${artist.dateOfDeath} + ')'">2000/07/18</span>
+        </div>
+        
+    </div>
+       
+       <div th:unless="${artist}">Does not exist</div>
+    </div>
+    
+    <div class="col">
+     <h3>Film</h3>
+    <hr>
+    <div th:unless="${artist.hasStarredMovies()}">Does not have an actor role in any film</div>   
+    
+    <div th:if="${artist.hasStarredMovies()}">
+    <ul>
+    <li th:each="movie : ${artist.getActorOf()}">
+    <a th:href="@{'/movie' + '/' + ${movie.id}}"
+				th:text="${movie.title} + ' (' + ${movie.year} + ')'">Up! (2000)</a>
+    </li>
+    </ul>
+    </div>
+    
+    
+     <div th:unless="${artist.hasDirectedMovies()}">Does not have a director role in any film</div>   
+     <div th:if="${artist.hasDirectedMovies()}">
+    <ul>
+    <li th:each="movie : ${artist.getDirectorOf()}">
+    <a th:href="@{'/movie' + '/' + ${movie.id}}"
+				th:text="${movie.title} + ' (' + ${movie.year} + ')'">Up! (2000)</a>
+    </li>
+    </ul>
+    </div>
+    
+    
+    </div>
+    
+  </div>
+    
+    </section>
+    
+  </body>
+</html>

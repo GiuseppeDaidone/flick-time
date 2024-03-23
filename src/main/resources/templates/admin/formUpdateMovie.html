@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		New Movie
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<nav>
+		<table><tr>
+		<td class="logo">
+			<div>
+				<a href="/"><img src="/images/flicktime-logo2-long.png" width="20%" /></a>
+			</div>
+		</td>
+		<td>
+			<table class="nav-table"><tr>
+				<div th:if="${userDetails}">
+					<td><span th:text="${userDetails.username}" class="nav-username"></span></td>
+					<td><button onclick="window.location.href='/logout';">Logout</button><td>
+				</div>
+			</tr></table>
+		</td>
+		<td>
+			<div th:unless="${userDetails}">
+				<button onclick="window.location.href='/login';" class="nav-button">Login</button>
+			</div>
+		</td>
+		</tr></table>
+  	</nav>
+
+	<h1>Update movie</h1>
+	<div th:if="${movie}">
+		<div>
+			<span th:text="${movie.title}">Up!</span>
+			<span th:text="'(' + ${movie.year} + ')'">2000</span>
+		</div>
+		<div th:if="${movie.director}">
+			<span>Director: </span><span th:text="${movie.director.name} + ' ' + ${movie.director.surname}">Steven
+				Spielberg</span>
+			<a th:href="@{'/admin/addDirector/' + ${movie.id}}">Edit director</a></span>
+		</div>
+		<div th:unless="${movie.director}">
+			<a th:href="@{'/admin/addDirector/' + ${movie.id}}">Add a director</a>
+		</div>
+
+		<div>
+			<span>Actors: </span>
+			<div th:each="actor: ${movie.actors}">
+				<span th:text="${actor.name} + ' ' + ${actor.surname}">Al Pacino</span>
+			</div>
+			<a th:href="@{'/admin/updateActors/' + ${movie.id}}">
+				<button type="button">Edit</button>
+			</a>
+		</div>
+		<div th:unless="${movie}">This movie does not exist</div>
+</body>
+
+</html>

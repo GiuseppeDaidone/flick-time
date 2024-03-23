@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		FlickTime - Homepage Admin
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<nav>
+		<table><tr>
+		<td class="logo">
+			<div>
+				<a href="/"><img src="/images/flicktime-logo2-long.png" width="20%" /></a>
+			</div>
+		</td>
+		<td>
+			<table class="nav-table"><tr>
+				<div th:if="${userDetails}">
+					<td><span th:text="${userDetails.username}" class="nav-username"></span></td>
+					<td><button onclick="window.location.href='/logout';">Logout</button><td>
+				</div>
+			</tr></table>
+		</td>
+		<td>
+			<div th:unless="${userDetails}">
+				<button onclick="window.location.href='/login';" class="nav-button">Login</button>
+			</div>
+		</td>
+		</tr></table>
+  	</nav>
+
+	<h1>Check the archive</h1>
+	<div>
+		<a href="/movie">Movies</a>
+	</div>
+	<div>
+		<a href="/artist">Artists</a>
+	</div>
+	<h1>Admin operations</h1>
+	<div>
+		<a href="/admin/indexMovie">Operations on movies</a>
+	</div>
+	<div>
+		<a href="/admin/indexArtist">Operations on artists</a>
+	</div>
+</body>
+
+</html>

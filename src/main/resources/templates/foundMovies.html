@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Movies found</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<nav>
+		<table><tr>
+		<td class="logo">
+			<div>
+				<a href="/"><img src="/images/flicktime-logo2-long.png" width="20%" /></a>
+			</div>
+		</td>
+		<td>
+			<table class="nav-table"><tr>
+				<div th:if="${userDetails}">
+					<td><span th:text="${userDetails.username}" class="nav-username"></span></td>
+					<td><button onclick="window.location.href='/logout';">Logout</button><td>
+				</div>
+			</tr></table>
+		</td>
+		<td>
+			<div th:unless="${userDetails}">
+				<button onclick="window.location.href='/login';" class="nav-button">Login</button>
+			</div>
+		</td>
+		</tr></table>
+  	</nav>
+
+	<h1>Movies respecting the search requirements</h1>
+	<div th:if="${movies.isEmpty()}">There is no movie that respects the search requirements</div>
+	<ul th:if="${!movies.isEmpty()}">
+		<li th:each="movie : ${movies}">
+			<a href="movie.html" th:href="@{'/movie' + '/' + ${movie.id}}"
+				th:text="${movie.title} + ' (' + ${movie.year}+')'">Up! (2000)</a>
+		</li>
+	</ul>
+</body>
+
+</html>
