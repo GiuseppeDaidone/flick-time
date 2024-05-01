@@ -1,4 +1,4 @@
-package it.uniroma3.siw.demo;
+package laboratory.flicktime.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

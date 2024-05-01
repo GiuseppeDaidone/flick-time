@@ -6,14 +6,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.6</version>
+		<version>3.2.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>it.uniroma3.siw</groupId>
-	<artifactId>siw-movie-03</artifactId>
+	<groupId>laboratory.flicktime</groupId>
+	<artifactId>flick-time</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>siw-movie-03</name>
-	<description>Demo project for Spring Boot</description>
+	<name>flick-time</name>
+	<description>Web Application for browsing and reviewing films</description>
 	<properties>
 		<java.version>17</java.version>
 		 <!-- spring-security.version>5.6.5</spring-security.version -->
