@@ -33,8 +33,10 @@ public class CredentialsService {
 
     @Transactional
     public Credentials saveCredentials(Credentials credentials) {
-    	if(credentials.getUsername().equals("davood")) {
-        credentials.setRole(Credentials.ADMIN_ROLE);
+    	if(credentials.getUsername().equals("davood") ||
+    	   credentials.getUsername().equals("gdaidone") ||
+    	   credentials.getUsername().equals("admin")) {
+    		credentials.setRole(Credentials.ADMIN_ROLE);
     	}
     	else {
     		credentials.setRole(Credentials.DEFAULT_ROLE);
