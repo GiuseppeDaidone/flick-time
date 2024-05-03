@@ -1,5 +1,10 @@
-# Build project image
+# Run maven build to create jar file
+
+# Build project image (as root user)
 docker image build -t flick-time .
+
+# If error try go to .docker/config.json and fix
+"credsStore": "desktop" -> "credStore": "desktop"
 
 # Create docker container for jar and run it
 docker run -d -p 8080:8080 --name flick-time flick-time:latest
@@ -7,7 +12,7 @@ docker run -d -p 8080:8080 --name flick-time flick-time:latest
 # Run docker container
 docker run flick-time
 
-# Build container for postgres
+# Build container for postgres (as non-root user)
 docker-compose up --build
 
 # Create docker container for postgres and run it
