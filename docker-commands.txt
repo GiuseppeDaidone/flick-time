@@ -1,4 +1,4 @@
-# Run maven build to create jar file
+# Run maven build to create jar file with goals=package and profiles=pom.xml
 
 # Build project image (as root user)
 docker image build -t flick-time .
