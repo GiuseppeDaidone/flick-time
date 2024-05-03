@@ -1,0 +1,18 @@
+# Build project image
+docker image build -t flick-time .
+
+# Create docker container for jar and run it
+docker run -d -p 8080:8080 --name flick-time flick-time:latest
+
+# Run docker container
+docker run flick-time
+
+# Build container for postgres
+docker-compose up --build
+
+# Create docker container for postgres and run it
+docker run -p 5432:5432 --name postgres -e POSTGRES_PASSWORD=postgres -d postgres:latest
+
+# If port is blocked due to postgres running in background
+sudo lsof -i :5432
+sudo kill -9 <PID>

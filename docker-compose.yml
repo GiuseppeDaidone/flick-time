@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  app:
+    image: 'flick-time:latest'
+    build:
+      context: .
+    container_name: flick-time
+    depends_on:
+      - database
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+          
+  database:
+    image: 'postgres:latest'
+    container_name: db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: flicktime
